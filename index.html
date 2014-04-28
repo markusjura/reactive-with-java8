@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Going Reactive with Java 8</title>
+
+    <meta name="description" content="Java 8’s lambdas make building Reactive applications a whole lot easier and cleaner. Through copious code examples this session will show you how to build event-driven, scalable, resilient, and responsive applications with Java 8, Play Framework and Akka. On the web side you will learn about using lambdas for async & non-blocking requests & WebSockets. You will also learn how the actor model in Akka pairs well with lambdas to create an event-driven foundation that provides concurrency, clustering and fault-tolerance.">
+    <meta name="author" content="Markus Jura">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/custom.css" id="theme">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+        document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<aside style="display: block; position: fixed; bottom: 5px; left: 10px; z-index: 30;">
+    <a href="http://typesafe.com"><img src="assets/typesafe-logo.png"></a>
+</aside>
+
+<div class="reveal">
+
+<div class="slides">
+
+<!-- ########################################################################################### -->
+<!-- BEGIN
+<!-- ########################################################################################### -->
+
+<section id="content" data-markdown data-state="h2Uppercase"><script type="text/template">
+## Going Reactive with Java 8
+
+### Markus Jura
+
+[markus.jura.github.io/reactive-with-java8](http://markus.jura.github.io/reactive-with-java8)       
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## About me
+
+- Trainer [@Typesafe](http://typesafe.com)
+- Living in Hamburg
+- Co-Founder of [testmunk](https://testmunk.com)
+- 2 years Scala, 10 years Java background
+
+
+  <a href="https://twitter.com/markusjura" class="twitter-follow-button" data-show-count="true">Follow @markusjura</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+  <iframe src="http://ghbtns.com/github-btn.html?user=retronym&type=follow&count=true"
+  allowtransparency="true" frameborder="0" scrolling="0" width="165" height="20"></iframe>
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Sources
+
+- Slide Deck on [Github](http://markus.jura.github.io/reactive-with-java8)
+- Activator Template [Go Reactive with Java 8 & Play](http://typesafe.com/activator/template/reactive-java8-play)
+- Activator Template [Reactive Stocks](http://typesafe.com/activator/template/reactive-stocks-java8)
+</script></section>
+
+<section>
+<h2>Get Involved!</h2>
+<ul>
+    <li><a href="http://playframework.com">Play</a></li>
+    <li><a href="http://akka.io">Akka</a></li>
+    <li><a href="https://typesafe.com/activator">Typesafe Activator</a></li>
+    <li>
+        <a href="https://twitter.com/typesafe" class="twitter-follow-button" data-show-count="true">Follow @typesafe</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </li>
+    <li>Be part of the fifth annual <a href="http://www.scaladays.org">Scala Days</a></li>
+</ul>
+</section>
+
+</div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+    });
+
+</script>
+
+</body>
+</html>
