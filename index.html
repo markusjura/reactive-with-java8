@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="css/reveal.min.css">
     <link rel="stylesheet" href="css/theme/custom.css" id="theme">
+    <link rel="stylesheet" href="lib/css/idea.css">
 
     <!-- If the query includes 'print-pdf', use the PDF print sheet -->
     <script>
@@ -28,8 +29,8 @@
 </head>
 
 <body>
-<aside style="display: block; position: fixed; bottom: 5px; left: 10px; z-index: 30;">
-    <a href="http://typesafe.com"><img src="assets/typesafe-logo.png"></a>
+<aside style="display: block; position: fixed; bottom: 20px; left: 20px; z-index: 30;">
+    <a href="http://typesafe.com"><img src="assets/logo.png"></a>
 </aside>
 
 <div class="reveal">
@@ -40,12 +41,10 @@
 <!-- BEGIN
 <!-- ########################################################################################### -->
 
-<section id="content" data-markdown data-state="h2Uppercase"><script type="text/template">
+<section id="content" data-markdown data-background="#53cdec" data-state="h2Uppercase"><script type="text/template">
 ## Going Reactive with Java 8
 
 ### Markus Jura
-
-[markusjura.github.io/reactive-with-java8](http://markusjura.github.io/reactive-with-java8)       
 </script></section>
 
 <!-- ########################################################################################### -->
@@ -65,9 +64,433 @@
 
     <iframe src="http://ghbtns.com/github-btn.html?user=markusjura&type=follow&count=false"
     allowtransparency="true" frameborder="0" scrolling="0" width="165" height="20"></iframe>
-</div>
-  
+</div>  
 </section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Agenda
+
+- [Java 8 Overview](#/java-8-overview) <!-- .element: class="agendaItem" -->
+- [Reactive Apps](#/reactive-apps) <!-- .element: class="agendaItem" -->
+- [Play & Java 8](#/play-java-8) <!-- .element: class="agendaItem" -->
+- [Akka & Java 8](#/akka-java-8) <!-- .element: class="agendaItem" -->
+- [Reactive-Stocks Hands-On](#/reactive-stocks) <!-- .element: class="agendaItem" -->
+</script></section>
+
+</section>  
+
+
+<!-- ########################################################################################### -->
+<!-- Java 8 Overview
+<!-- ########################################################################################### -->
+
+<section>
+
+<section id="java-8-overview" data-markdown data-background="#53cdec" data-state="h2Uppercase"><script type="text/template">
+## Java 8 Overview
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Lambda Overview
+
+Java 7
+
+``` java
+Runnable r1 = new Runnable() {
+  @Override
+  public void run() {
+    System.out.println("Hello Darmstadt!");
+  }    
+};
+```
+
+Java 8
+
+``` java
+Runnable r2 = () -> System.out.println("Hello Darmstadt!");
+```
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Lambda Examples
+
+``` java
+// With parameters
+Comparator<String> comp = (x, y) -> 
+  Integer.compare(c.length(), y.length());
+
+// Multiple lines
+button.setOnAction(event -> {
+  System.out.println("Thanks for clicking!");
+  return event.data;
+});
+```
+</script></section>
+
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Lambda Method References
+
+Verbose syntax
+
+``` java
+button.setOnAction(event -> System.out.println(event));
+```
+
+With method reference
+
+``` java
+button.setOnAction(System.out::println);
+```
+</script></section>
+
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Java Streams - Imperative Style
+
+- Before Java 8: Manipulation of collections trough iterators
+- Explicit looping based on imperative programming paradigm
+- Express **how** the computer should execute an algorithm
+
+``` java
+// Calculate Sum of the weights of red blocks
+List<Block> blocks = /* ... */;
+ 
+int sumOfWeights = 0;
+for (Block block : blocks) {
+  if (block.getColor() == Color.RED) {
+    sumOfWeights += block.getWeight();
+  }
+}
+```
+</script></section>
+
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Java Streams - Functional Style
+
+- Java 8: Manipulation of collections trough Streams
+- Functional programming style
+- Express **what** the computer should calculate
+
+``` java
+// Calculate Sum of the weights of red blocks
+List<Block> blocks = /* ... */;
+int sumOfWeights = blocks.stream() // Stream<Block>
+  .filter(b -> b.getColor() == Color.RED)
+  .mapToInt(b -> b.getWeight()) // IntStream
+  .sum();
+```
+</script></section>
+
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Java Streams Operators
+
+- Intermediate operators:
+  - Lazy operation, does not do any transformation immediately
+  - `map`, `flatMap`, `filter`
+- Terminal operators
+  - Return an actual result
+  - Calling  a terminal operator executes the stream pipeline
+  - `forEach`, `collect`, `reduce`, `iterator`
+</script></section>
+
+</section>  
+
+
+
+<!-- ########################################################################################### -->
+<!-- Reactive Apps
+<!-- ########################################################################################### -->
+
+<section>
+
+<section id="reactive-apps" data-markdown data-background="#53cdec" data-state="h2Uppercase"><script type="text/template">
+## Reactive Apps
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Users Want
+
+- In-Sync data
+- Real-time collaboration
+- Instant feedback
+- Not to wait
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Users Want Reactive Apps
+
+![Reactive Manifesto](assets/reactive-manifesto.png "reactive-manifesto")
+
+[reactivemanifesto.org](http://www.reactivemanifesto.org/)
+</script></section>
+
+</section>
+
+
+
+
+<!-- ########################################################################################### -->
+<!-- Play & Java 8
+<!-- ########################################################################################### -->
+
+<section>
+
+<section id="play-java-8" data-markdown data-background="#53cdec" data-state="h2Uppercase"><script type="text/template">
+## Play & Java 8
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Reactive Web Apps with Play
+
+- Reactive requests
+- Reactive composition
+- Reactive push
+- 2-Way reactive
+
+<br/>
+
+[![Play Framework](assets/play-normal.png "play-framework")](http://www.playframework.com)
+</script>
+</section>
+
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Routes
+
+Declarative, type-safe URL Mapping
+```
+VERB    PATH         CONTROLLER_METHOD
+
+GET     /            controllers.Application.index()
+GET     /foo         controllers.Application.foo()
+```
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Controllers
+
+- Synchronous Request
+- Useful for requests that don&#39;t block
+
+``` java
+public static Result index() {
+  return ok("Hello Darmstadt!");
+}
+```
+
+![Client Server Blocking](assets/client-server-blocking.png "client-server-blocking")
+</script></section>
+
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Asynchronous Request
+
+Under the cover Play implement all requests in this way
+
+``` java
+public static Result index() {
+  return F.Promise.promise(() -> ok("Hello Darmstadt!"));
+}
+```
+
+![Client Server Non-Blocking](assets/client-server-non-blocking.png "client-server-non-blocking")
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Asynchronous Request
+
+Under the cover Play implement all requests in this way
+
+``` java
+public static Result index() {
+  return F.Promise.promise(() -> ok("Hello Darmstadt!"));
+}
+```
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Reactive Request (Async + Non-Blocking)
+
+``` java
+import play.libs.F.*;
+
+public static Integer calc() {
+    return (5134 * 5789) / 349;
+}
+
+public static Promise<Result> basicPromise() { 
+  Promise<Integer> promise = Promise.promise(() -> calc()); 
+  return promise.map((Integer i) -> ok("Result is: " + i));
+}
+```
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Webservice Request
+
+- Client &#8594; Server &#8594; Service
+- Both async & non-blocking
+
+``` java
+public static Promise<Result> getPage() { 
+  final Promise<WS.Response> promise = 
+    WS.url("http://google.com").get();
+  return promise.map(response -> ok(response.getBody()));
+}
+```
+
+![Client Server Service Non-Blocking](assets/client-server-service-non-blocking.png "client-server-service-non-blocking")
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Reactive Composition
+
+- Three requests, two in parallel (depending on thread availability)
+- All async & non-blocking
+
+``` java
+public static Promise<Result> composition() { 
+  final Promise<WS.Response> googlePromise = 
+    WS.url("http://google.com").get();
+  final Promise<WS.Response> twitterPromise = 
+    WS.url("http://twitter.com").get();
+
+  return googlePromise.flatMap((google) ->
+    twitterPromise.map((twitter) ->
+      ok(google.getBody() + twitter.getBody())));
+}
+```
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Reactive Push with SSE
+
+- Push from Server &#8594; Client 
+
+Controller (Server)
+
+``` java
+public static Result events() {
+  return ok(new EventSource() {
+    public void onConnected() {
+      send(Event.event("hello"));
+    }
+  });
+}
+```
+
+CoffeeScript (Client)
+``` coffeescript
+events = new EventSource("/events")
+events.onmessage = (event) ->
+  alert(event.data)
+```
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## 2-Way Reactive with WebSockets I
+
+- Bi-directional push
+  - Server &#8594; Client
+  - Client &#8594; Server 
+
+Controller (Server)
+
+``` java
+public static WebSocket<String> echo() {
+  return new WebSocket<String>() {
+    public void onReady(final In<String> in, 
+                        final Out<String> out) {
+      in.onMessage(out::write);
+    }
+  };
+}
+```
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## 2-Way Reactive with WebSockets I
+
+CoffeeScript (Client)
+``` coffeescript
+ws = new WebSocket("ws://url/echo")
+ws.onmessage = (event) ->
+  alert(event.data)
+
+ws.onopen = () ->
+  ws.send("Echo")
+```
+</script></section>
+
+</section> 
+
+
+<!-- ########################################################################################### -->
+<!-- Akka & Java 8
+<!-- ########################################################################################### -->
+
+<section>
+
+<section id="akka-java-8" data-markdown data-background="#53cdec" data-state="h2Uppercase"><script type="text/template">
+## Akka & Java 8
+</script></section>
+
+</section>
+
+
+
+<!-- ########################################################################################### -->
+<!-- Reactive Stocks Hands-On
+<!-- ########################################################################################### -->
+
+<section>
+
+<section id="reactive-stocks" data-markdown data-background="#53cdec" data-state="h2Uppercase"><script type="text/template">
+## Reactive Stocks Hands-On
+</script></section>
 
 <!-- ########################################################################################### -->
 
@@ -94,6 +517,8 @@
     <li>Be part of the fifth annual <a href="http://www.scaladays.org">Scala Days</a></li>
 </ul>
 </section>
+
+</section> 
 
 </div>
 
