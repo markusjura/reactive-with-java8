@@ -478,6 +478,86 @@ ws.onopen = () ->
 ## Akka & Java 8
 </script></section>
 
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## What is Akka?
+
+<blockquote>Akka is a toolkit and runtime for building highly concurrent, distributed, and fault tolerant event-driven applications on the JVM.</blockquote>
+<small>
+
+<br/>
+
+[![Akka](assets/akka.png "akka")](http://akka.io)
+</script>
+</section>
+
+<!-- ########################################################################################### -->
+
+
+<section data-markdown><script type="text/template">
+## Akka is Reactive
+
+![Reactive](assets/reactive-manifesto.png "Reactive")
+
+- React to events
+- React to load
+- React to failure
+</script></section>
+
+<!-- ########################################################################################### -->
+
+
+<section data-markdown data-state="imgNoBorder"><script type="text/template">
+## Akka&#39;s Value Proposition
+
+A single **unified** programming model for
+
+- simpler concurrency
+- simpler distribution
+- simpler fault tolerance
+</script></section>
+
+<!-- ########################################################################################### -->
+
+
+<section data-markdown><script type="text/template">
+## Simpler Concurrency
+
+![Concurrency](assets/concurrency.jpg "Concurrency")
+
+- Actors let us write code in a **single-threaded illusion**
+- No locks, *synchronized* or other primitives needed
+</script></section>
+
+
+<!-- ########################################################################################### -->
+
+
+<section data-markdown><script type="text/template">
+## Simpler Distribution
+
+![Distribution](assets/distribution.jpg "Distribution")
+
+- Everything in Akka is **distributed by default**
+- Akka goes from remote to local by optimization
+</script></section>
+
+
+<!-- ########################################################################################### -->
+
+
+<section data-markdown><script type="text/template">
+## Simpler Fault Tolerance
+
+![Resilience](assets/resilience.jpg "Resilience")
+
+Akka **decouples** communication from failure handling:
+
+- Supervisors handle failure
+- Callers need not care (they can&#39;t anyway)
+</script></section>
+
 </section>
 
 
