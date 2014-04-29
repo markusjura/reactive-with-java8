@@ -121,11 +121,7 @@ Runnable r2 = () -> System.out.println("Hello Darmstadt!");
 ## Lambda Examples
 
 ``` java
-// With parameters
-Comparator<String> comp = (x, y) -> 
-  Integer.compare(c.length(), y.length());
-
-// Multiple lines
+// With parameters + multiple lines
 button.setOnAction(event -> {
   System.out.println("Thanks for clicking!");
   return event.data;
