@@ -318,25 +318,11 @@ Under the cover Play implement all requests in this way
 
 ``` java
 public static Result index() {
-  return F.Promise.promise(() -> ok("Hello Darmstadt!"));
+  return Promise.promise(() -> ok("Hello Darmstadt!"));
 }
 ```
 
 ![Client Server Non-Blocking](assets/client-server-non-blocking.png "client-server-non-blocking")
-</script></section>
-
-<!-- ########################################################################################### -->
-
-<section data-markdown><script type="text/template">
-## Asynchronous Request
-
-Under the cover Play implement all requests in this way
-
-``` java
-public static Result index() {
-  return F.Promise.promise(() -> ok("Hello Darmstadt!"));
-}
-```
 </script></section>
 
 <!-- ########################################################################################### -->
