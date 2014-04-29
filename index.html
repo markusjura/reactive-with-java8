@@ -308,27 +308,10 @@ public static Result index() {
 ![Client Server Blocking](assets/client-server-blocking.png "client-server-blocking")
 </script></section>
 
-
 <!-- ########################################################################################### -->
 
 <section data-markdown><script type="text/template">
 ## Asynchronous Request
-
-Under the cover Play implement all requests in this way
-
-``` java
-public static Result index() {
-  return Promise.promise(() -> ok("Hello Darmstadt!"));
-}
-```
-
-![Client Server Non-Blocking](assets/client-server-non-blocking.png "client-server-non-blocking")
-</script></section>
-
-<!-- ########################################################################################### -->
-
-<section data-markdown><script type="text/template">
-## Reactive Request (Async + Non-Blocking)
 
 ``` java
 import play.libs.F.*;
@@ -342,6 +325,8 @@ public static Promise<Result> basicPromise() {
   return promise.map((Integer i) -> ok("Result is: " + i));
 }
 ```
+
+![Client Server Non-Blocking](assets/client-server-non-blocking.png "client-server-non-blocking")
 </script></section>
 
 <!-- ########################################################################################### -->
