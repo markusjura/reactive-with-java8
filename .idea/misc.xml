@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="IdProvider" IDEtalkID="1DC99DC4267F8A508AE472BC713FBAD9" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" />
+  <component name="SbtLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$USER_HOME$/Downloads/gggg" value="1392712404000" />
+        <entry key="$PROJECT_DIR$/../authService" value="1394799005000" />
+        <entry key="$PROJECT_DIR$/../eplay-scala" value="1393847992000" />
+        <entry key="$PROJECT_DIR$/../eplay-scala-prototype" value="1394616271000" />
+        <entry key="$PROJECT_DIR$/../hakky-hour" value="1392713728000" />
+        <entry key="$PROJECT_DIR$/../heiko" value="1395096310000" />
+        <entry key="$PROJECT_DIR$/../play-slick-advanced" value="1393885573000" />
+        <entry key="$PROJECT_DIR$/../playground" value="1392302224000" />
+        <entry key="$PROJECT_DIR$/../scalatest-withplay" value="1394700688000" />
+        <entry key="$PROJECT_DIR$/../slick-workshop" value="1395134752000" />
+        <entry key="$PROJECT_DIR$/../statisfy-github2" value="1392970665000" />
+      </map>
+    </option>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
+
