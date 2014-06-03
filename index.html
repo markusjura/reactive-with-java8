@@ -361,6 +361,13 @@ public static Promise<Result> composition() {
 
 - Push from Server &#8594; Client 
 
+CoffeeScript (Client)
+``` coffeescript
+events = new EventSource("/events")
+events.onmessage = (event) ->
+  alert(event.data)
+```
+
 Controller (Server)
 
 ``` java
@@ -371,13 +378,6 @@ public static Result events() {
     }
   });
 }
-```
-
-CoffeeScript (Client)
-``` coffeescript
-events = new EventSource("/events")
-events.onmessage = (event) ->
-  alert(event.data)
 ```
 </script></section>
 
@@ -390,6 +390,22 @@ events.onmessage = (event) ->
   - Server &#8594; Client
   - Client &#8594; Server 
 
+CoffeeScript (Client)
+``` coffeescript
+ws = new WebSocket("ws://url/echo")
+ws.onmessage = (event) ->
+  alert(event.data)
+
+ws.onopen = () ->
+  ws.send("Echo")
+```  
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## 2-Way Reactive with WebSockets I
+
 Controller (Server)
 
 ``` java
@@ -401,22 +417,6 @@ public static WebSocket<String> echo() {
     }
   };
 }
-```
-</script></section>
-
-<!-- ########################################################################################### -->
-
-<section data-markdown><script type="text/template">
-## 2-Way Reactive with WebSockets I
-
-CoffeeScript (Client)
-``` coffeescript
-ws = new WebSocket("ws://url/echo")
-ws.onmessage = (event) ->
-  alert(event.data)
-
-ws.onopen = () ->
-  ws.send("Echo")
 ```
 </script></section>
 
